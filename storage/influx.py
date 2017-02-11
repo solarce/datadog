@@ -14,4 +14,5 @@ def play_load(measurement, value, timestamp, tags):
 
 
 def write_data(points):
+    print points
     client.write_points(points)
