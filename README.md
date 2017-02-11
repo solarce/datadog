@@ -20,4 +20,15 @@ pip install -r requirements.txt
 gunicorn -w 4 -b 127.0.0.1:4000 -c app app:app
 ```
 
+## dd-agent config
+```yaml
+dd_url: http://45.32.61.92:8080
+```
+
+## grafana
+
+* url: http://openslack.com/
+* username: test
+* password: test
+
 
