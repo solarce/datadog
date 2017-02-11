@@ -1,4 +1,6 @@
 from flask import Flask
+from storage import influx, elasticsearch
+from alert import elasticsearch
 
 app = Flask(__name__)
 
