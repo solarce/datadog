@@ -16,7 +16,7 @@ def index():
     return "Hello DataDog!"
 
 
-@app.route('/api/intake', methods=['POST'])
+@app.route('/api/intake')
 def intake():
     if request.method == 'POST':
         series = zlib.decompress(request.get_data())
@@ -95,7 +95,7 @@ def intake():
     return "success"
 
 
-@app.route('/api/v1/series', methods=['POST'])
+@app.route('/api/v1/series')
 def series():
     if request.method == 'POST':
         series = request.get_json()

@@ -17,7 +17,7 @@ pip install -r requirements.txt
 ## RUN APP
 
 ```bash
-gunicorn -w 4 -b 127.0.0.1:4000 -c app app:app
+gunicorn -c app.conf app:app
 ```
 
 ## dd-agent config
