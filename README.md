@@ -1,4 +1,5 @@
 # datadog
+send dd-agent data to  influxdb and elasticsearch, so you can view dashboard and cofigure dashboard with grafana.
 
 * metrics storage to influxdb
 * ioStats storage to influxdb
