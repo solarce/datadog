@@ -4,12 +4,15 @@ import zlib, json, settings, time
 
 app = Flask(__name__)
 
+
 def tags_format(tags):
-    new_tags={}
-    for tag in tags:
-        k, v = tag.split(":", 1)
-        new_tags[k] = v.strip()
+    new_tags = {}
+    if tags:
+        for tag in tags:
+            k, v = tag.split(":", 1)
+            new_tags[k] = v.strip()
     return new_tags
+
 
 @app.route('/')
 def index():
@@ -91,7 +94,7 @@ def intake():
                 }
                 processes.update(ext)
                 es_datas.append(processes)
-        # TODO write es data
+                # TODO write es data
     return "success"
 
 
