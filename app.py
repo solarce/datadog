@@ -24,7 +24,7 @@ def intake():
         metrics = series["metrics"]
         hostname = series["internalHostname"]
         host_tags = series["host-tags"]
-        collection_timestamp = int(series["collection_timestamp"]) * 1000000000
+        collection_timestamp = int(series["collection_timestamp"])
         points = []
         for metric in metrics:
             new_tags = {"hostname": metric[3]["hostname"]}
