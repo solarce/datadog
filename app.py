@@ -33,9 +33,7 @@ def intake():
             new_tags = {"hostname": metric[3]["hostname"]}
             if "tags" in metric[3]:
                 new_tags.update(tags_format(metric[3]["tags"]))
-            timestamp = int(metric[1])
-            value = metric[2]
-            points.append(influx.play_load(metric[0], value, timestamp, new_tags))
+            points.append(influx.play_load(metric[0], metric[2], int(metric[1]), new_tags))
 
         if "ioStats" in series:
             for drive, iostat in series["ioStats"].iteritems():
