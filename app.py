@@ -48,6 +48,8 @@ def intake():
 
         if series["os"] == "linux":
             for key, metric in settings.STOCK_METRICS.iteritems():
+                if series[key] is None:
+                    continue
                 points.append(influx.play_load(metric.lower(), series[key], collection_timestamp, series["host-tags"]))
 
         for service in series["service_checks"]:
