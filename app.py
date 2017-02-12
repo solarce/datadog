@@ -27,6 +27,7 @@ def intake():
         metrics = series["metrics"]
         hostname = series["internalHostname"]
         host_tags = series["host-tags"]
+        host_tags["hostname"] = hostname
         collection_timestamp = int(series["collection_timestamp"])
         points = []
         for metric in metrics:
@@ -48,7 +49,7 @@ def intake():
             for key, metric in settings.STOCK_METRICS.iteritems():
                 if series[key] is None:
                     continue
-                points.append(influx.play_load(metric.lower(), series[key], collection_timestamp, series["host-tags"]))
+                points.append(influx.play_load(metric.lower(), series[key], collection_timestamp, host_tags))
 
         for service in series["service_checks"]:
             new_tags = {"host_name": service["host_name"]}
