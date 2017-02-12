@@ -34,6 +34,8 @@ def intake():
             new_tags = {"hostname": metric[3]["hostname"]}
             if "tags" in metric[3]:
                 new_tags.update(tags_format(metric[3]["tags"]))
+            if "device_name" in metric[3]:
+                new_tags["device_name"] = metric[3]["device_name"]
             points.append(influx.play_load(metric[0], metric[2], int(metric[1]), new_tags))
 
         if "ioStats" in series:
