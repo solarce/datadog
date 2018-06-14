@@ -1,7 +1,7 @@
-bind='0.0.0.0:5060'
+bind='127.0.0.1:5060'
 workers=10
 backlog=2048
-debug=True
-proc_name='gunicorn.pid'
-pidfile='/var/run/gunicorn.pid'
+debug=False
+proc_name='gunicorn_datadog2wavefront.pid'
+pidfile='/var/run/datadog2wavefront/gunicorn_datadog2wavefront.pid'
 loglevel='info'
