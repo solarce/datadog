@@ -1,21 +1,18 @@
-# datadog
-send dd-agent data to  influxdb and elasticsearch, so you can view dashboard and cofigure alert with grafana.
-
-* metrics storage to influxdb
-* ioStats storage to influxdb
-* service checks storage to influxdb
-* processes  storage to elasticsearch
-* evnets  storage to elasticsearch
-* resources  storage to elasticsearch
-* system info  storage to elasticsearch
-* dd-agent log storage to elasticsearch by logstash
+# datadog2wavefront
+send dd-agent data to Wavefront.com via the [Wavefront Data Format](https://docs.wavefront.com/wavefront_data_format.html#wavefront-data-format-syntax) and [Wavefront Proxy](https://docs.wavefront.com/proxies.html)
 
 ## Install 
 ```bash
 pip install -r requirements.txt
 ```
 
-## RUN APP
+## Configure App
+```bash
+cp app.conf.example app.conf # and tweak settings as needed
+cp settings.py.example settings.py # and tweak settings as needed
+```
+
+## Run the App
 
 ```bash
 gunicorn -c app.conf app:app
@@ -23,13 +20,8 @@ gunicorn -c app.conf app:app
 
 ## dd-agent config
 ```yaml
-dd_url: http://45.32.61.92:8080
+dd_url: http://localhost:5060 # assumes the default port
 ```
 
-## grafana
-
-* url: http://openslack.com/
-* username: test
-* password: test
 
 

@@ -1,7 +1,7 @@
 bind='0.0.0.0:5060'
 workers=10
 backlog=2048
-debug=False
+debug=True
 proc_name='gunicorn.pid'
 pidfile='/var/run/gunicorn.pid'
-loglevel='debug'
+loglevel='info'
