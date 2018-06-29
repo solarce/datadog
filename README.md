@@ -1,3 +1,7 @@
+# This is an experiment, probably don't want to use in production
+
+----
+
 # datadog2wavefront
 send dd-agent data to Wavefront.com via the [Wavefront Data Format](https://docs.wavefront.com/wavefront_data_format.html#wavefront-data-format-syntax) and [Wavefront Proxy](https://docs.wavefront.com/proxies.html)
 
