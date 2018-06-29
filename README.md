@@ -1,35 +1,71 @@
-# datadog
-send dd-agent data to  influxdb and elasticsearch, so you can view dashboard and cofigure alert with grafana.
+# This is an experiment, probably don't want to use in production
 
-* metrics storage to influxdb
-* ioStats storage to influxdb
-* service checks storage to influxdb
-* processes  storage to elasticsearch
-* evnets  storage to elasticsearch
-* resources  storage to elasticsearch
-* system info  storage to elasticsearch
-* dd-agent log storage to elasticsearch by logstash
+----
 
-## Install 
+# datadog2wavefront
+send dd-agent data to Wavefront.com via the [Wavefront Data Format](https://docs.wavefront.com/wavefront_data_format.html#wavefront-data-format-syntax) and [Wavefront Proxy](https://docs.wavefront.com/proxies.html)
+
+
+
+## Setup on a server
+
+### Install the app
+(assumes you are running as `ubuntu`, with `sudo` privileges)
+```bash
+sudo mkdir /opt/datadog2wavefront
+sudo chown ubuntu /opt/datadog2wavefront
+git clone https://github.com/solarce/datadog2wavefront /opt/datadog2wavefront
+
+cd /opt/datadog2wavefront
+./scripts/install.sh
+```
+
+### Setup as an upstart service
+(assumes you are running as `ubuntu`, with `sudo` privileges)
+```bash
+cd /opt/datadog2wavefront
+
+cp app.conf.example app.conf # tweak settings as needed
+
+cp settings.py.example settings.py # tweak settings as needed
+
+sudo chown datadog2wavefront:ubuntu app.conf settings.py
+
+sudo cp /opt/datadog2wavefront/upstart.conf.example /etc/init/datadog2wavefront.conf
+
+sudo service datadog2wavefront status
+```
+
+### Run the app as a service
+```bash
+sudo service datadog2wavefront start
+```
+
+## Run locally, for dev, testing, etc
+
+### Install the app
 ```bash
 pip install -r requirements.txt
 ```
 
-## RUN APP
+### Configure App
+```bash
+cp app.conf.example app.conf # and tweak settings as needed
+cp settings.py.example settings.py # and tweak settings as needed
+```
 
+### Run the App
+(will output logging to shell)
 ```bash
 gunicorn -c app.conf app:app
 ```
 
+----
+
 ## dd-agent config
 ```yaml
-dd_url: http://45.32.61.92:8080
+dd_url: http://localhost:5060 # assumes the default port
 ```
 
-## grafana
-
-* url: http://openslack.com/
-* username: test
-* password: test
 
 

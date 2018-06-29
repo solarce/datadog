@@ -1,0 +1,5 @@
+.idea/
+*.pyc
+
+settings.py
+app.conf
